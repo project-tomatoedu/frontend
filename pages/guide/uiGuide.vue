@@ -150,14 +150,24 @@
     layout: 'guide'
   })
 
-  let input = ref('tomato');
-  let input2 = ref('tomato');
-  let inputPw = ref({
+  type input = {
+    value: string,
+    show: Boolean
+  }
+
+  type inputOther = {
+    label: string,
+    disabled: Boolean
+  }
+
+  let input:Ref<string> = ref('tomato');
+  let input2:Ref<string> = ref('tomato');
+  let inputPw:Ref<input> = ref({
     value: '',
     show: false
   })
 
-  let checkItem = [
+  let checkItem:inputOther[] = [
     {
       label: 'check',
       disabled: false,
@@ -175,10 +185,10 @@
       disabled: true,
     }
   ]
-  let checked = ref(['check checked', 'check checked + disabled']);
-  let checked2 = ref(['check checked', 'check checked + disabled']);
+  let checked:Ref<Array<string>> = ref(['check checked', 'check checked + disabled']);
+  let checked2:Ref<Array<string>> = ref(['check checked', 'check checked + disabled']);
 
-  let rdoItem = [
+  let rdoItem:inputOther[] = [
     {
       label: 'radio',
       disabled: false,
@@ -196,8 +206,8 @@
       disabled: true,
     }
   ]
-  let radioVal = ref('radio check + disabled');
-  let radioVal2 = ref('radio check + disabled');
+  let radioVal:Ref<string> = ref('radio check + disabled');
+  let radioVal2:Ref<string> = ref('radio check + disabled');
 
   function clearInput() {
     input2.value = '';
