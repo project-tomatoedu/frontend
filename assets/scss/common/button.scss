@@ -1,0 +1,39 @@
+button {
+	padding: 0;
+	border: 0;
+	background-color: inherit;
+  cursor: pointer;
+}
+
+[class^=btn-] {
+  padding: 9px $margin-side;
+  @include txt-04;
+  border-radius: 4px;
+  &.sm {
+    padding: 5px $margin-side;
+  }
+  &.lg {
+    padding: 15px $margin-side;
+  }
+}
+
+.btn {
+  &-p {
+    color: $color-white;
+    background-color: $color-point;
+  }
+  &-s {
+    color: $color-main;
+    border: 1px solid $color-main;
+    background-color: $color-white;
+  }
+  &-b {
+    color: $color-point;
+    border: 1px solid $color-point;
+    background-color: $color-white;
+  }
+  &-disabled {
+    color: $color-gray1;
+    background-color: $color-gray2;
+  }
+}

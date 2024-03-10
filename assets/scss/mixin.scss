@@ -1,0 +1,39 @@
+@mixin txt($ftSize: null, $ftWeight: null, $lineHeight: null, $color: null ) {
+    font-size: $ftSize;
+    font-weight: $ftWeight;
+    line-height: $lineHeight;
+    color: $color;
+}
+
+@mixin txt-01 {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+@mixin txt-02 {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+}
+
+@mixin txt-03 {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+
+@mixin txt-04 {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+}
+
+@mixin txt-05 {
+    font-size: 1.2rem;
+}
+
+@mixin hiddenText {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}

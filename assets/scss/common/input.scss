@@ -1,0 +1,111 @@
+input[type="text"],
+input[type="password"] {
+  padding: 9px $margin-side;
+  font-size: 14px;
+  border: 1px solid $color-gray4;
+  border-radius: 8px;
+  transition: 0.3s linear;
+  &:hover {
+    border-color: $color-gray2;
+  }
+  &:focus {
+    border: 1px solid $color-point;
+    outline: 0;
+  }
+  &:read-only,
+  &:disabled {
+    &:focus,
+    &:hover {
+      border: 1px solid $color-gray4;
+    }
+  }
+  &::placeholder {
+    color: $color-gray4;
+  }
+}
+
+.input-clear {
+  position: relative;
+  input[type="text"] {
+    padding-right: 40px;
+  }
+  .clear-btn {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: url($iconUrl + 'ico_input_clear.svg') no-repeat center center / 16px;
+  }
+}
+
+.input-pw {
+  position: relative;
+  input {
+    padding-right: 40px;
+  }
+  [class^=pw-] {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: url($iconUrl + 'ico_eye_on.svg') no-repeat center center / 16px;
+  }
+  .pw-hide {
+    background-image: url($iconUrl + 'ico_eye_off.svg');
+  }
+
+}
+
+.ipt-checkbox {
+  @include txt-04;
+  .check-input {
+    margin: 0;
+    vertical-align: middle;
+  }
+  .check-label {
+    margin-left: $margin1;
+    vertical-align: middle;
+  }
+  &+ .ipt-checkbox {
+    margin-left: $margin2;
+  }
+}
+
+.check-col {
+  .ipt-checkbox {
+    display: block;
+    &+ .ipt-checkbox {
+      margin-top: $margin2;
+      margin-left: 0;
+    }
+  }
+}
+
+.ipt-radio {
+  @include txt-04;
+  .radio-input {
+    margin: 0;
+    vertical-align: middle;
+  }
+  .radio-label {
+    margin-left: $margin1;
+    vertical-align: middle;
+  }
+  &+ .ipt-radio {
+    margin-left: $margin2;
+  }
+}
+
+.radio-col {
+  .ipt-radio {
+    display: block;
+    &+ .ipt-radio {
+      margin-top: $margin2;
+      margin-left: 0;
+    }
+  }
+}

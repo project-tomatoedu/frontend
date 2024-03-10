@@ -1,0 +1,101 @@
+.wrap {
+	width: 100%;
+	height: 100%;
+}
+
+.test {
+	font-size: 1.6rem;
+	color: $color-main;
+}
+
+.hidden-text {
+	@include hiddenText;
+}
+
+.color {
+	&-main {
+		color: $color-main;
+	}
+
+	&-point {
+		color: $color-point;
+	}
+
+	&-white {
+		color: $color-white;
+	}
+
+	&-gray1 {
+		color: $color-gray1;
+	}
+
+	&-gray2 {
+		color: $color-gray2;
+	}
+
+	&-gray3 {
+		color: $color-gray3;
+	}
+
+	&-gray4 {
+		color: $color-gray4;
+	}
+}
+
+.tit {
+	&-h1 {
+		font-size: 1.6rem;
+		line-height: 3.6rem;
+		em {
+			font-weight: $fw-medium;
+			color: $color-point;
+		}
+	}
+
+	&-page {
+		font-size: 2.4rem;
+		font-weight: $fw-bold;
+		line-height: 3.6rem;
+	}
+}
+
+.txt01 {
+	@include txt-01;
+}
+
+.txt02 {
+	@include txt-02;
+}
+
+.txt03 {
+	@include txt-03;
+}
+
+.txt04 {
+	@include txt-04;
+}
+
+.txt05 {
+	@include txt-05;
+}
+
+.title-area {
+	button {
+		&.tit-main {
+			padding-right: 28px;
+			background: $color-white url($iconUrl + 'arrow_right.svg') no-repeat center right / 24px 24px;
+		}
+	}
+	.tit-main {
+		font-size: 2rem;
+		line-height: 3rem;
+	}
+	.tit-sub {
+		font-size: 1.4rem;
+		line-height: 2.2rem;
+		color: $color-point;
+		&+ .tit-main {
+			margin-top: $margin1;
+		}
+	}
+}

@@ -1,0 +1,33 @@
+@import '../common/reset.scss', '../common/font.scss';
+@import '../common/button.scss', '../common/input.scss', '../common.scss';
+
+.guide-wrap {
+  padding: 0 $margin2;
+}
+
+h1 {
+  margin-top: $margin3;  
+  font-size: 2.4rem;
+  font-weight: $fw-bold;
+}
+
+.guide-item {
+  margin-top: $margin3;
+}
+
+.guide-txt {
+  @include txt-01;
+  color: $color-point;
+}
+
+.guide-cont {
+  margin-top: $margin2;
+  padding: $margin2;
+  @include txt-04;
+  border: 1px solid $color-gray3;
+  border-radius: 4px;
+  &> .txt03 {
+    margin-top: $margin1;
+    font-weight: $fw-bold;
+  }
+}
