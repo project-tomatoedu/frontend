@@ -152,12 +152,12 @@
 
   type input = {
     value: string,
-    show: Boolean
+    show: boolean | 'true' | 'false'
   }
 
   type inputOther = {
     label: string,
-    disabled: Boolean
+    disabled: boolean | 'true' | 'false'
   }
 
   let input:Ref<string> = ref('tomato');
