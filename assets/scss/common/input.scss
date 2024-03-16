@@ -1,5 +1,6 @@
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+textarea {
   padding: 9px $margin-side;
   font-size: 14px;
   border: 1px solid $color-gray4;
@@ -24,11 +25,13 @@ input[type="password"] {
   }
 }
 
-.input-clear {
+.input-item {
   position: relative;
-  input[type="text"] {
-    padding-right: 40px;
+  &> input,
+  &> textarea {
+    width: 100%;
   }
+
   .clear-btn {
     position: absolute;
     top: 50%;
@@ -38,13 +41,7 @@ input[type="password"] {
     height: 16px;
     background: url($iconUrl + 'ico_input_clear.svg') no-repeat center center / 16px;
   }
-}
 
-.input-pw {
-  position: relative;
-  input {
-    padding-right: 40px;
-  }
   [class^=pw-] {
     position: absolute;
     top: 50%;
@@ -58,6 +55,27 @@ input[type="password"] {
     background-image: url($iconUrl + 'ico_eye_off.svg');
   }
 
+  .count-len {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    font-size: 1rem;
+    line-height: 1;
+    color: $color-gray2;
+  }
+}
+
+.input-clear,
+.input-pw {
+  input {
+    padding-right: 40px;
+  }
+}
+
+.input-count {
+  textarea {
+    padding-bottom: 24px;
+  }
 }
 
 .ipt-checkbox {
@@ -85,6 +103,30 @@ input[type="password"] {
   }
 }
 
+.check-button {
+  display: flex;
+  flex-wrap: wrap;
+  .check-input {
+    @include hiddenText;
+    &:checked {
+      &+ .check-label {
+        color: $color-white;
+        background-color: $color-point;
+      }
+    }
+  }
+  .check-label {
+    padding: 5px 12px;
+    color: $color-gray5;
+    background-color: rgba(133, 136, 153, 0.08);
+    border-radius: 18px;
+    transition: 0.3s linear;
+    &:hover {
+      background-color: rgba(133, 136, 153, 0.16);
+    }
+  }
+}
+
 .ipt-radio {
   @include txt-04;
   .radio-input {
@@ -106,6 +148,53 @@ input[type="password"] {
     &+ .ipt-radio {
       margin-top: $margin2;
       margin-left: 0;
+    }
+  }
+}
+
+.select-item {
+  position: relative;
+  &> select {
+    width: 100%;
+    padding-right: 32px;
+  }
+  .select-ico {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    display: block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url($iconUrl + 'arrow_select_down.svg') no-repeat center center / 16px;
+    } 
+  }
+}
+
+select {
+  padding: 9px $margin-side;
+  font-size: 14px;
+  border: 1px solid $color-gray4;
+  border-radius: 8px;
+  transition: 0.3s linear;
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  &:focus {
+    &+ .select-ico {
+      &::after {
+        transform: rotate(180deg);
+      }
     }
   }
 }

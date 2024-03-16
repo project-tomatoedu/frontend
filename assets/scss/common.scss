@@ -40,6 +40,10 @@
 	&-gray4 {
 		color: $color-gray4;
 	}
+
+	&-gray5 {
+		color: $color-gray5;
+	}
 }
 
 .tit {
@@ -98,4 +102,58 @@
 			margin-top: $margin1;
 		}
 	}
+}
+
+.form-box {
+	.form-title {
+		font-size: 1.4rem;
+		color: $color-main;
+	}
+	.form-item {
+		margin-top: $margin2;
+		&.required {
+			.form-label {
+				padding-right: 34px;
+				&::after {
+					position: absolute;
+					top: 0;
+					right: 0;
+					display: block;
+					content: '(필수)';
+					font-size: 1.2rem;
+					font-weight: $fw-regular;
+					line-height: 1.8rem;
+					color: $color-gray3;
+				}
+			}
+		}
+		.form-label {
+			position: relative;
+			display: inline-block;
+			margin-bottom: $margin1;
+			font-size: 1.2rem;
+			line-height: 1.8rem;
+			font-weight: $fw-bold;
+			color: $color-gray5;
+		}
+		.form-error {
+			padding-top: 4px;
+			padding-left: 4px;
+			font-size: 1.4rem;
+			color: $color-point;
+		}
+	}
+}
+
+.box-border {
+	padding: 16px;
+	border: 1px solid $color-gray4;
+	border-radius: 8px;
+}
+
+.box-gray {
+	padding: 16px;
+	border: 1px solid $color-gray4;
+	background-color: rgba(169,171,184,.08);
+	border-radius: 8px;
 }

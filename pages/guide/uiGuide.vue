@@ -28,6 +28,7 @@
         <li class="color-gray2">회색 #ccc</li>
         <li class="color-gray3">회색 #b1b1b1</li>
         <li class="color-gray4">회색 #e1e1e8</li>
+        <li class="color-gray5">회색 #525463</li>
       </ul>
       <div class="txt03">Font</div>
       <ul>
@@ -85,6 +86,20 @@
   </div>
 
   <div class="guide-item">
+    <div class="guide-txt">Box</div>
+    <div class="guide-cont">
+      <div class="txt03">border box</div>
+      <div class="box-border">
+        내용입니다
+      </div>
+      <div class="txt03">gray box</div>
+      <div class="box-gray">
+        내용입니다
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-item">
     <div class="guide-txt">Checkbox</div>
     <div class="guide-cont">
       <label v-for="(item, idx) in checkItem" :key="'check' + idx" class="ipt-checkbox">
@@ -93,6 +108,13 @@
       </label>
       <div class="txt03">check col</div>
       <div class="check-col">
+        <label v-for="(item, idx) in checkItem" :key="'check' + idx" class="ipt-checkbox">
+          <input class="check-input" type="checkbox" v-model="checked2" :disabled="item.disabled" :value="item.label">
+          <span class="check-label">{{ item.label }}</span>
+        </label>
+      </div>
+      <div class="txt03">check button</div>
+      <div class="check-button">
         <label v-for="(item, idx) in checkItem" :key="'check' + idx" class="ipt-checkbox">
           <input class="check-input" type="checkbox" v-model="checked2" :disabled="item.disabled" :value="item.label">
           <span class="check-label">{{ item.label }}</span>
@@ -122,25 +144,86 @@
     <div class="guide-txt">Input</div>
     <div class="guide-cont">
       <div class="txt03">normal</div>
-      <input type="text" v-model="input">
+      <div class="input-item">
+        <input type="text" v-model="input">
+      </div>
       <div class="txt03">readonly</div>
-      <input type="text" v-model="input" readonly>
+      <div class="input-item">
+        <input type="text" v-model="input" readonly>
+      </div>
       <div class="txt03">disabled</div>
-      <input type="text" v-model="input" disabled>
+      <div class="input-item">
+        <input type="text" v-model="input" disabled>
+      </div>
       <div class="txt03">clearable</div>
-      <span class="input-clear">
+      <div class="input-item input-clear">
         <input type="text" v-model="input2" placeholder="내용을 입력해주세요">
         <button v-if="input2.length > 0" type="button" class="clear-btn" @click="clearInput()">
           <span class="hidden-text">내용 삭제</span>
         </button>
-      </span>
+      </div>
       <div class="txt03">password</div>
-      <span class="input-pw">
+      <div class="input-item input-pw">
         <input :type="inputPw.show ? 'text' : 'password'" v-model="inputPw.value">
         <button type="button" :class="inputPw.show ? 'pw-view' : 'pw-hide'" @click="ctrlPwInput()">
           <span class="hidden-text">비밀번호 {{ inputPw.show ? '보이기' : '숨기기' }}</span>
         </button>
-      </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-txt">Textarea</div>
+    <div class="guide-cont">
+      <div class="txt03">normal</div>
+      <div class="input-item">
+        <textarea v-model="textarea" placeholder="내용을 입력해주세요" />
+      </div>
+      <div class="txt03">count</div>
+      <div class="input-item input-count">
+        <textarea v-model="textarea2" :maxlength="maxLength" placeholder="내용을 입력해주세요" />
+        <span class="count-len">{{ textarea2.length }} / {{ maxLength }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-txt">Select</div>
+    <div class="guide-cont">
+      <div class="select-item">
+        <select v-model="selectValue">
+          <option v-for="(item, idx) in selectList" :key="'select' + idx" :value="item">{{ item }}</option>
+        </select>
+        <i class="select-ico"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="guide-item">
+    <div class="guide-txt">Form</div>
+    <div class="guide-cont">
+      <div class="form-box">
+        <div class="form-title">신청자 정보</div>
+        <div class="form-item" :rules="rule.name" :class="rule.name.require ? 'required' : ''">
+          <span class="form-label">
+            이름
+          </span>
+          <div class="input-item">
+            <input type="text" v-model="formList.name">
+          </div>
+          <div class="form-error">
+            {{ rule.name.message }}
+          </div>
+        </div>
+        <div class="form-item">
+          <span class="form-label">
+            아이디
+          </span>
+          <div class="input-item">
+            <input type="text" v-model="formList.id">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -160,10 +243,24 @@
     disabled: boolean | 'true' | 'false'
   }
 
+  type objType = {
+    [index: string]: string,
+  }
+
+  type objInObj = {
+    [index: string]: ruleType,
+  }
+
+  type ruleType = {
+    require: boolean | 'true' | 'false',
+    message: string
+  }
+
   let input:Ref<string> = ref('tomato');
   let input2:Ref<string> = ref('tomato');
+
   let inputPw:Ref<input> = ref({
-    value: '',
+    value: '1234',
     show: false
   })
 
@@ -208,6 +305,26 @@
   ]
   let radioVal:Ref<string> = ref('radio check + disabled');
   let radioVal2:Ref<string> = ref('radio check + disabled');
+
+  let maxLength:Ref<number> = ref(20);
+
+  let textarea:Ref<string> = ref('tomato');
+  let textarea2:Ref<string> = ref('tomato');
+
+  let selectList:Array<string> = ['바나나', '딸기', '토마토'];
+  let selectValue:Ref<string> = ref('딸기');
+  
+  let formList:Ref<objType> = ref({
+    name: 'tomato',
+    id: 'id123'
+  })
+
+  let rule:objInObj = {
+    name: {
+      require: true,
+      message: '이름을 입력해주세요'
+    }
+  }
 
   function clearInput() {
     input2.value = '';
