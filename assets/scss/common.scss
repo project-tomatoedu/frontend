@@ -131,10 +131,7 @@
 			position: relative;
 			display: inline-block;
 			margin-bottom: $margin1;
-			font-size: 1.2rem;
-			line-height: 1.8rem;
-			font-weight: $fw-bold;
-			color: $color-gray5;
+			@include txt(1.2rem, $fw-bold, 1.8rem, $color-gray5);
 		}
 		.form-error {
 			padding-top: 4px;
@@ -156,4 +153,76 @@
 	border: 1px solid $color-gray4;
 	background-color: rgba(169,171,184,.08);
 	border-radius: 8px;
+}
+
+.list-box {
+	.list-item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: $margin3;
+		border-bottom: 1px solid $color-gray2;
+	}
+	.list-cont {
+		flex: 1;
+		max-width: 90%;
+		padding-right: $margin3;
+	}
+	.list-other {
+		flex-shrink: 0;
+	}
+	.list-tit {
+		@include txt(1.6rem, $fw-medium, 2.4rem, $color-main);
+		@include ellipse;
+	}
+	.list-info {
+		display: flex;
+		align-items: center;
+		margin-top: $margin2;
+		@include txt($ftSize: 1.2rem);
+	}
+	.cont-writer {
+		display: flex;
+		align-items: center;
+		.writer-img {
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			overflow: hidden;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		.writer-name {
+			margin-left: $margin2;
+		}
+	}
+	.cont-date {
+		color: $color-gray1;
+		position: relative;
+		margin-left: $margin2;
+		padding-left: $margin2;
+		&::before {
+			position: absolute;
+			display: block;
+			content: '';
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
+			width: 1px;
+			height: 10px;
+			background-color: $color-gray1;
+		}
+	}
+	.cont-view {
+		@include txt-05;
+		text-align: right;
+		.view-count {
+			@include txt-03;
+			font-weight: $fw-bold;
+			color: $color-point;
+		}
+	}
 }

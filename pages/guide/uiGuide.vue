@@ -226,9 +226,18 @@
       </div>
     </div>
   </div>
+
+  <div class="guide-item">
+    <div class="guide-txt">List</div>
+    <div class="guide-cont">
+      <ListCont :list-data="listData" />
+    </div>
+  </div>
 </template>
 
 <script setup lang='ts'>
+  import ListCont from '~/components/template/ListCont.vue';
+
   definePageMeta({
     layout: 'guide'
   })
@@ -325,6 +334,23 @@
       message: '이름을 입력해주세요'
     }
   }
+
+  let listData = [
+    {
+      title: '공지사항1',
+      profileImg: '../../images/template/profile_img.jpg',
+      profileName: '토마토',
+      date: '24.03.18',
+      viewCount: 1
+    },
+    {
+      title: '안녕하세요, 말줄임 1줄 타이틀입니다. 안녕하세요, 말줄임 1줄 타이틀입니다. 안녕하세요, 말줄임 1줄 타이틀입니다.',
+      profileImg: '../../images/template/profile_img.jpg',
+      profileName: '토마토',
+      date: '24.03.18',
+      viewCount: 1
+    }
+  ]
 
   function clearInput() {
     input2.value = '';

@@ -27,6 +27,7 @@
 
 @mixin txt-05 {
     font-size: 1.2rem;
+    line-height: 1.4rem;
 }
 
 @mixin hiddenText {
@@ -36,4 +37,17 @@
     height: 1px;
     margin: -1px;
     overflow: hidden;
+}
+
+@mixin ellipse($row: 1) {
+  @if ($row > 1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $row;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+  } @else {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
