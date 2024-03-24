@@ -159,14 +159,14 @@
       <div class="input-item input-clear">
         <input type="text" v-model="input2" placeholder="내용을 입력해주세요">
         <button v-if="input2.length > 0" type="button" class="clear-btn" @click="clearInput()">
-          <span class="hidden-text">내용 삭제</span>
+          <span class="hidden">내용 삭제</span>
         </button>
       </div>
       <div class="txt03">password</div>
       <div class="input-item input-pw">
         <input :type="inputPw.show ? 'text' : 'password'" v-model="inputPw.value">
         <button type="button" :class="inputPw.show ? 'pw-view' : 'pw-hide'" @click="ctrlPwInput()">
-          <span class="hidden-text">비밀번호 {{ inputPw.show ? '보이기' : '숨기기' }}</span>
+          <span class="hidden">비밀번호 {{ inputPw.show ? '보이기' : '숨기기' }}</span>
         </button>
       </div>
     </div>
@@ -233,10 +233,20 @@
       <ListCont :list-data="listData" />
     </div>
   </div>
+
+  <div class="guide-item">
+    <div class="guide-txt">Lecture</div>
+    <div class="guide-cont">
+      <div class="lecture-list">
+        <LectureCard :lecture-data="lectureData" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang='ts'>
   import ListCont from '~/components/template/ListCont.vue';
+  import LectureCard from '~/components/template/LectureCard.vue';
 
   definePageMeta({
     layout: 'guide'
@@ -349,6 +359,27 @@
       profileName: '토마토',
       date: '24.03.18',
       viewCount: 1
+    }
+  ]
+
+  let lectureData = [
+    {
+      thumbImg: '../../images/template/lecture_thumb.jpg',
+      name: '생활 속 코딩 강의',
+      category: '생활코딩',
+      level: '쉬움',
+      like: 56,
+      rate: 5,
+      price: '무료'
+    },
+    {
+      thumbImg: '../../images/template/lecture_thumb.jpg',
+      name: '체험 학습',
+      category: '생활코딩',
+      level: '보통',
+      like: 145,
+      rate: 5,
+      price: '무료'
     }
   ]
 
